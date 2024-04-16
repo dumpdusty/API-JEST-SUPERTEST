@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cls && npx jest",
     "testex": "cls && npx jest test-example.spec.ts",
-    "tourdb": "cls && npx jest tests",
+    "tourdb": "npx jest tests",
     "single": "npx jest upload.spec.ts"
   },
   "keywords": [],
