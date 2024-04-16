@@ -78,9 +78,6 @@ describe("TOUR", () => {
         .post("/tours")
         .set("Cookie", cookie)
         .send(randomRequiredTourBody);
-
-        console.log(res.body.message, '************************');
-        
     });
 
     it("verify response status", async () => {
