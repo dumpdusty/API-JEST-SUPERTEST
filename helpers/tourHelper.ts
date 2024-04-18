@@ -1,8 +1,9 @@
 
 import * as supertest from "supertest";
+const request = supertest("localhost:8001/api/v1");
 const chance = require('chance').Chance()
 import { Tour, TourMin } from "../data/interface";
-const request = supertest("localhost:8001/api/v1");
+
 
 let tourRandomName = "tour_" + chance.word();
 export const diffArray = ["easy", "medium", "difficult"];
@@ -78,4 +79,8 @@ export function tourCreate(cookie: any, data: any){
 
 export function tourGetAll(cookie: any){
   return request.get('/tours').set("Cookie", cookie)
+}
+
+export function tourDelete(cookie: any, tourId: string){
+  return request.delete(`/tours/${tourId}`).set("Cookie", cookie);
 }
