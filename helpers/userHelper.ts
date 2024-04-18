@@ -1,8 +1,10 @@
 import * as supertest from "supertest";
+const request = supertest("localhost:8001/api/v1");
+
 import { User } from '../data/interface'
 const chance = require('chance').Chance()
 
-const request = supertest("localhost:8001/api/v1");
+
 const requestSdet = supertest("https://practice-react.sdetunicorns.com/api/test");
 
 export function createRandomUserBody(password = chance.string({length: 16})): User{
