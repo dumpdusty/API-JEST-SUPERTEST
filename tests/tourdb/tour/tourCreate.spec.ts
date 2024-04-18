@@ -5,7 +5,7 @@ import {
   createRandomTour,
   createRequiredRandomTour,
   diffArray,
-  tourCreate,
+  tourCreate, tourDelete, tourGetAll
 } from "../../../helpers/tourHelper";
 
 // const chance = require("chance").Chance();
@@ -15,6 +15,7 @@ import {
 let cookie: any; /*[x:string] - this doesn't work - reason unknown*/
 
 describe("TOUR CREATE", () => {
+  let afterAllRes: any
   describe("create normal tour", () => {
 
     let res: any, cookie: any;
@@ -46,6 +47,20 @@ describe("TOUR CREATE", () => {
     it("verify response difficulty", async () => {
       expect(diffArray).toContain(res.body.data.data.difficulty);
     });
+
+    afterAll(async() => {
+      afterAllRes = await tourGetAll(cookie)
+  
+      console.log(afterAllRes.body.data.data, 'ALL TOURS BEFORE');
+
+      for (let i = 0; i < afterAllRes.body.data.data.length; i++) {
+        await tourDelete(cookie, afterAllRes.body.data.data[i]._id)
+      }
+
+      afterAllRes = await tourGetAll(cookie)
+
+      console.log(afterAllRes.body.data.data, 'ALL TOURS AFTER');
+    })
   });
 
   describe("create tour-required only", () => {
@@ -79,8 +94,23 @@ describe("TOUR CREATE", () => {
       it("verify response difficulty", async () => {
         expect(diffArray).toContain(res.body.data.data.difficulty);
       });
+      
+      afterAll(async() => {
+        afterAllRes = await tourGetAll(cookie)
+    
+        console.log(afterAllRes.body.data.data, 'ALL TOURS BEFORE');
+  
+        for (let i = 0; i < afterAllRes.body.data.data.length; i++) {
+          await tourDelete(cookie, afterAllRes.body.data.data[i]._id)
+        }
+  
+        afterAllRes = await tourGetAll(cookie)
+  
+        console.log(afterAllRes.body.data.data, 'ALL TOURS AFTER');
+      })
   });
 });
+
 
 // TODO create delete tour spec
 // TODO create afterAll hook with delete all users and tours in each spec
