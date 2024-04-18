@@ -22,7 +22,7 @@ describe("TOUR", () => {
     beforeAll(async () => {
       await createUser(userCreateBody).then((res) => {
 
-        //console.log(res.body)
+        // console.log(res.body)
 
         expect(res.statusCode).toBe(201);
         expect(res.body.data.user.email).toBe(userCreateBody.email);

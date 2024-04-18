@@ -15,7 +15,7 @@ function randomDifficulty() {
 const randomDifLvl = randomDifficulty();
 
 function createRandomCoordinates() {
-    return [chance.latitude(), chance.longitude()]
+    return [chance.latitude({min: -30, max: 70}), chance.longitude({min: -30, max: 70})]
 }
 
 const randomCoordinates = createRandomCoordinates()

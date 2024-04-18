@@ -6,8 +6,8 @@
   "scripts": {
     "test": "cls && npx jest",
     "testex": "cls && npx jest test-example.spec.ts",
-    "tourdb": "npx jest tests",
-    "single": "npx jest upload.spec.ts"
+    "tourdb": "npx jest tourdb",
+    "single": "npx jest tourCreate.spec.ts"
   },
   "keywords": [],
   "author": "",

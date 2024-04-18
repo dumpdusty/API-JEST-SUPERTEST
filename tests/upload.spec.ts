@@ -1,5 +1,5 @@
 import * as supertest from 'supertest'
-import { upload } from '../../data/helpers'
+import { upload } from '../data/helpers'
 const request = supertest('https://practice-react.sdetunicorns.com/api/test')
 
 
