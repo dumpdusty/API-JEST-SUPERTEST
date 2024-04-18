@@ -82,4 +82,4 @@ describe("TOUR CREATE", () => {
   });
 });
 
-// TODO create afterAll hook with delete all tours
+// TODO create afterAll hook with delete all users and tours in each spec
