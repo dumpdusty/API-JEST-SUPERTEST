@@ -1,44 +1,33 @@
 import * as supertest from "supertest";
-import { createRandomTourUser, tourUserCreateBody } from "../../../data/user";
-import { deleteUser, createUser, loginUser } from "../../../data/helpers";
+import { createRandomUserBody, createUser, getAllUsers,deleteUser } from "../../../helpers/userHelper";
+
 import {
-  randomTourBody,
-  randomRequiredTourBody,
+  createRandomTour,
+  createRequiredRandomTour,
   diffArray,
-} from "../../../data/tour";
+  tourCreate,
+} from "../../../helpers/tourHelper";
 
-const chance = require("chance").Chance();
+// const chance = require("chance").Chance();
 
-const request = supertest("localhost:8001/api/v1");
+// const request = supertest("localhost:8001/api/v1");
 
 let cookie: any; /*[x:string] - this doesn't work - reason unknown*/
 
-describe("TOUR", () => {
+describe("TOUR CREATE", () => {
   describe("create normal tour", () => {
 
     let res: any, cookie: any;
-    const userCreateBody = createRandomTourUser()
+    const userCreateBody = createRandomUserBody();
+    const randomTourBody = createRandomTour();
     
     beforeAll(async () => {
       await createUser(userCreateBody).then((res) => {
-
-        // console.log(res.body)
-
         expect(res.statusCode).toBe(201);
-        expect(res.body.data.user.email).toBe(userCreateBody.email);
-
         cookie = res.header["set-cookie"];
       });
 
-      res = await request
-        .post("/tours")
-        .set("Cookie", cookie)
-        .send(randomTourBody);
-
-        // console.log(randomTourBody, '+++++++++++++++');
-        
-
-        // console.log(res.body, '====================');
+      res = await tourCreate(cookie, randomTourBody);
         
     });
 
@@ -62,22 +51,17 @@ describe("TOUR", () => {
   describe("create tour-required only", () => {
 
     let res: any, cookie: any;
-    const userCreateBody = createRandomTourUser()
+    const userCreateBody = createRandomUserBody()
+    const randomRequiredTourBody = createRequiredRandomTour();
+
     
     beforeAll(async () => {
       await createUser(userCreateBody).then((res) => {
-
-        // console.log(res.body);
-        
         expect(res.statusCode).toBe(201);
-        expect(res.body.data.user.email).toBe(userCreateBody.email);
         cookie = res.header["set-cookie"];
       });
       
-      res = await request
-        .post("/tours")
-        .set("Cookie", cookie)
-        .send(randomRequiredTourBody);
+      res = await tourCreate(cookie,randomRequiredTourBody)
     });
 
     it("verify response status", async () => {
@@ -97,3 +81,5 @@ describe("TOUR", () => {
       });
   });
 });
+
+// TODO create afterAll hook with delete all tours

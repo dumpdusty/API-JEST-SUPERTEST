@@ -1,6 +1,8 @@
 
+import * as supertest from "supertest";
 const chance = require('chance').Chance()
-import { Tour, TourMin } from "./interface";
+import { Tour, TourMin } from "../data/interface";
+const request = supertest("localhost:8001/api/v1");
 
 let tourRandomName = "tour_" + chance.word();
 export const diffArray = ["easy", "medium", "difficult"];
@@ -65,6 +67,15 @@ export function createRequiredRandomTour(name = chance.word({length:12})): TourM
       },
     };
   }
-export const randomTourBody = createRandomTour()
 
-export const randomRequiredTourBody = createRequiredRandomTour()
+
+export function tourCreate(cookie: any, data: any){
+  return request
+  .post("/tours")
+  .set("Cookie", cookie)
+  .send(data);
+}
+
+export function tourGetAll(cookie: any){
+  return request.get('/tours').set("Cookie", cookie)
+}

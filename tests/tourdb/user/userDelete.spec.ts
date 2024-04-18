@@ -1,36 +1,32 @@
 import * as supertest from "supertest";
-import { createRandomTourUser } from "../../../data/user";
-import { deleteUser, createUser, loginUser } from "../../../data/helpers";
+import { createRandomUserBody } from "../../../helpers/userHelper";
+import { deleteUser, createUser, getAllUsers } from '../../../helpers/userHelper' 
 
 const request = supertest("localhost:8001/api/v1");
 
 describe("DELETE USER", () => {
   describe("positive", () => {
-    let resCreateUser: any, resDeleteUser: any, cookie: any;
-    const userCreateBody = createRandomTourUser();
+    let res: any, cookie: any;
+    const userCreateBody = createRandomUserBody();
 
     beforeAll(async () => {
-      resCreateUser = await createUser(userCreateBody);
+     await createUser(userCreateBody).then(res => {
+      cookie = res.header["set-cookie"];
+     })
 
-      cookie = resCreateUser.header["set-cookie"];
-
-      resDeleteUser = await request.delete("/users/deleteMe").set("Cookie", cookie);
+      res = await deleteUser(cookie)
 
     //   console.log(resDeleteUser.body);
       
     //   console.log(resDeleteUser.statusCode);
-
-      
     });
 
     it("verify response statusCode", async () => {
-      expect(resDeleteUser.statusCode).toBe(204);
+      expect(res.statusCode).toBe(204);
     });
     
     it("verify response body", async () => {
-      expect(resDeleteUser.body).toEqual({});
+      expect(res.body).toEqual({});
     });
-
-   
   });
 });
