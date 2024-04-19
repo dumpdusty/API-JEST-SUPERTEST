@@ -18,6 +18,4 @@ jobs:
       run: npm i
 
     - name: Run Jest Test
-      env:
-        UPLOAD_URL: ${{ secrets.UPLOAD_URL}}  
       run: npx jest upload.spec.ts
