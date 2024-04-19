@@ -15,10 +15,6 @@ describe("DELETE USER", () => {
      })
 
       res = await deleteUser(cookie)
-
-    //   console.log(resDeleteUser.body);
-      
-    //   console.log(resDeleteUser.statusCode);
     });
 
     it("verify response statusCode", async () => {

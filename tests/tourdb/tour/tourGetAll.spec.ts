@@ -1,7 +1,7 @@
 import * as supertest from "supertest";
 import { createRandomUserBody } from "../../../helpers/userHelper";
 import { createUser } from '../../../helpers/userHelper'
-import { tourGetAll } from "../../../helpers/tourHelper";
+import { tourGetAll, tourDelete } from "../../../helpers/tourHelper";
 
 const request = supertest("localhost:8001/api/v1");
 
@@ -42,5 +42,11 @@ describe('GET ALL TOURS', () => {
             expect(res.body.data.data[i]).not.toBe('')
         }
     });
+
+    afterAll(async () => {
+        for (let i = 0; i < res.body.data.data.length; i++) {
+            await tourDelete(cookie, res.body.data.data[i]._id)
+          }
+    })
 
 });

@@ -8,27 +8,27 @@ describe("USER LOGIN", () => {
   const randomUserBody = createRandomUserBody()
 
   describe("POSITIVE", () => {
-    let signupRes: any, loginRes: any
+    let res: any
 
     beforeAll(async () => {
-      signupRes = await createUser(randomUserBody).then(res => {
+      await createUser(randomUserBody).then(res => {
         cookie = res.header["set-cookie"];
       })
 
-      loginRes = await loginUser(randomUserBody.email, randomUserBody.password)
+      res = await loginUser(randomUserBody.email, randomUserBody.password)
       });
 
       it("verify header", () => {
-        expect(loginRes.header["content-type"]).toContain("application/json");
+        expect(res.header["content-type"]).toContain("application/json");
       })
 
       it("verify response body status", () => {
-        expect(loginRes.body.status).toBe("success");
+        expect(res.body.status).toBe("success");
       })
 
       it("verify signup email equal login emails", () => {
         expect(randomUserBody.email).toBe(
-          loginRes.body.data.user.email
+          res.body.data.user.email
         );
       });
     });

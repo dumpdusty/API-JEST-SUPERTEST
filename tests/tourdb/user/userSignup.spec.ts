@@ -1,16 +1,20 @@
 import * as supertest from "supertest";
-import { createRandomUserBody, createUser } from "../../../helpers/userHelper";
+import { createRandomUserBody, createUser, deleteUser, getAllUsers } from "../../../helpers/userHelper";
 
 const request = supertest("localhost:8001/api/v1");
 
 describe("USER SIGN UP", () => {
-  describe("POSITIVE TESTS", () => {
-    let res: any;
-    const randomUserBody = createRandomUserBody()
-    beforeAll(async () => {
-      res = await createUser(randomUserBody);
-    })
+  let res: any, cookie: any
+  const randomUserBody = createRandomUserBody()
 
+  beforeAll(async () => {
+    res = await createUser(randomUserBody);
+
+    cookie = res.header["set-cookie"];
+  });
+
+  describe("POSITIVE TESTS", () => { 
+    
     it("verify user name", async () => {
       expect(res.body.data.user.name).toBe(randomUserBody.name);
     });
@@ -28,7 +32,58 @@ describe("USER SIGN UP", () => {
     });
   });
 
-  // long version / refactored below
+  
+  describe('NEGATIVE TESTS - short version', () => {
+    it('should not create a user w/o name', async () => {
+      const userNoName = { ...randomUserBody, name: null }
+      const res = await createUser(userNoName)
+
+      expect(res.statusCode).toEqual(500)
+      expect(res.body.error._message).toBe("User validation failed");
+      expect(res.body.error.errors.name.message).toBe("Please tell us your name!");
+    });
+
+    it("should not create a user w/o email", async () => {
+      const userNoEmail = { ...randomUserBody, email: null }
+      const res = await createUser(userNoEmail)
+      
+      expect(res.body.error._message).toBe("User validation failed");
+      expect(res.body.error.errors.email.message).toBe("Please provide your email");
+    });
+
+    it("should not create a user w/o password", async () => {
+      const userNoPass = { ...randomUserBody, password: null }
+      const res = await createUser(userNoPass)
+
+      expect(res.body.error._message).toBe("User validation failed");
+      expect(res.body.error.errors.password.message).toBe("Please provide a password");
+    });
+
+
+    it("should not create a user w/o passwordConfirm", async () => {
+      const userNoPassConfirm = { ...randomUserBody, passwordConfirm: null }
+      const res = await createUser(userNoPassConfirm)
+
+      expect(res.body.error._message).toBe("User validation failed");
+      expect(res.body.error.errors.passwordConfirm.message).toBe("Please confirm your password");
+    });
+  });
+
+  afterAll(async() => {
+    res = await getAllUsers(cookie)
+
+    // console.log(res.body.data.data, 'ALL TOURS BEFORE');
+
+      await deleteUser(cookie).then(res => {
+        expect(res.statusCode).toEqual(204)
+      })
+  });
+});
+
+
+
+
+  // long version / refactored above
   /*
   describe("NEGATIVE TESTS - long version", () => {
 
@@ -107,51 +162,3 @@ describe("USER SIGN UP", () => {
       });
   });
 */
-
-  describe('NEGATIVE TESTS - short version', () => {
-    const randomUserBody = createRandomUserBody()
-    it('should not create a user w/o name', async () => {
-      const userNoName = { ...randomUserBody, name: null }
-      const res = await request
-        .post("/users/signup")
-        .send(userNoName)
-        .expect(500)
-
-      expect(res.body.error._message).toBe("User validation failed");
-      expect(res.body.error.errors.name.message).toBe("Please tell us your name!");
-    });
-
-    it("should not create a user w/o email", async () => {
-      const userNoEmail = { ...randomUserBody, email: null }
-      const res = await request
-        .post("/users/signup")
-        .send(userNoEmail)
-        .expect(500)
-
-      expect(res.body.error._message).toBe("User validation failed");
-      expect(res.body.error.errors.email.message).toBe("Please provide your email");
-    });
-
-    it("should not create a user w/o password", async () => {
-      const userNoPass = { ...randomUserBody, password: null }
-      const res = await request
-        .post("/users/signup")
-        .send(userNoPass)
-        .expect(500)
-
-      expect(res.body.error._message).toBe("User validation failed");
-      expect(res.body.error.errors.password.message).toBe("Please provide a password");
-    });
-
-
-    it("should not create a user w/o passwordConfirm", async () => {
-      const userNoPassConfirm = { ...randomUserBody, passwordConfirm: null }
-      const res = await request
-        .post("/users/signup")
-        .send(userNoPassConfirm)
-        .expect(500)
-      expect(res.body.error._message).toBe("User validation failed");
-      expect(res.body.error.errors.passwordConfirm.message).toBe("Please confirm your password");
-    });
-  });
-});
