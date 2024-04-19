@@ -1,5 +1,5 @@
 import * as supertest from 'supertest'
-const request = supertest('https://practice-react.sdetunicorns.com/api/test')
+const request = supertest(process.env.UPLOAD_URL as string)
 
 
 export function upload(endpoint: string, files: string[]){

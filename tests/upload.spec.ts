@@ -1,7 +1,5 @@
-import * as supertest from 'supertest'
-import { upload } from '../helpers/uploadhelper'
-const request = supertest('https://practice-react.sdetunicorns.com/api/test')
 
+import { upload } from '../helpers/uploadhelper'
 
 describe('UPLOAD', () => {
     let res: any
