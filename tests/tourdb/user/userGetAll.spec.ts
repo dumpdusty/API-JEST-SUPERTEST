@@ -4,15 +4,13 @@ import { deleteUser, createUser, getAllUsers } from '../../../helpers/userHelper
 
 describe("GET ALL USERS", () => {
   describe("positive", () => {
-    let res: any, cookie: any;
-    const userCreateBody = createRandomUserBody();
+    let res: any, data: any =[]
 
-    beforeAll(async () => {
-     await createUser(userCreateBody).then((res) => {
-      cookie = res.header["set-cookie"];
-     })
+    beforeAll(async () => {      
 
-      res = await getAllUsers(cookie)
+    data.push(process.env.COOKIE)
+    
+      res = await getAllUsers(data)
     });
 
     it("verify response status", async () => {
@@ -24,7 +22,7 @@ describe("GET ALL USERS", () => {
     });
    
     afterAll(async () => {
-      await deleteUser(cookie)
+      await deleteUser(data)
     });
   });
 });

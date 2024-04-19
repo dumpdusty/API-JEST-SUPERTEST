@@ -10,20 +10,15 @@ import {
 
 
 describe("TOUR CREATE", () => {
-  let afterAllRes: any, cookie: any
-  const userCreateBody = createRandomUserBody();
-  beforeAll(async() => {
-    await createUser(userCreateBody).then((res) => {
-      expect(res.statusCode).toBe(201);
-      cookie = res.header["set-cookie"];
-    });
-  });
-  
+  let afterAllRes: any, data: any =[]
+  data.push(process.env.COOKIE)
+
   describe("create normal tour", () => {
     let res: any
+    
     beforeAll(async () => {
       const randomTourBody = createRandomTour();
-      res = await tourCreate(cookie, randomTourBody);
+      res = await tourCreate(data, randomTourBody);
     });
 
     it("verify response status", async () => {
@@ -47,7 +42,7 @@ describe("TOUR CREATE", () => {
     let res: any
     beforeAll(async () => {
       const randomRequiredTourBody = createRequiredRandomTour(); 
-      res = await tourCreate(cookie,randomRequiredTourBody)
+      res = await tourCreate(data,randomRequiredTourBody)
     });
 
     it("verify response status", async () => {
@@ -68,15 +63,15 @@ describe("TOUR CREATE", () => {
   });
   
   afterAll(async() => {
-    afterAllRes = await tourGetAll(cookie)
+    afterAllRes = await tourGetAll(data)
 
     // console.log(afterAllRes.body.data.data, 'ALL TOURS BEFORE');
 
     for (let i = 0; i < afterAllRes.body.data.data.length; i++) {
-      await tourDelete(cookie, afterAllRes.body.data.data[i]._id)
+      await tourDelete(data, afterAllRes.body.data.data[i]._id)
     }
 
-    afterAllRes = await tourGetAll(cookie)
+    afterAllRes = await tourGetAll(data)
 
     // console.log(afterAllRes.body.data.data, 'ALL TOURS AFTER');
   })
