@@ -1,12 +1,12 @@
 
-import { createRandomUserBody, createUser, deleteUser } from "../../../helpers/userHelper";
+import * as userHelper from "../../../helpers/userHelper";
 
 describe("USER SIGN UP", () => {
   let res: any, cookie: any
-  const randomUserBody = createRandomUserBody()
+  const randomUserBody = userHelper.createRandomUserBody()
 
   beforeAll(async () => {
-    res = await createUser(randomUserBody);
+    res = await userHelper.createUser(randomUserBody);
 
     cookie = res.header["set-cookie"];
   });
@@ -34,7 +34,7 @@ describe("USER SIGN UP", () => {
   describe('NEGATIVE TESTS - short version', () => {
     it('should not create a user w/o name', async () => {
       const userNoName = { ...randomUserBody, name: null }
-      const res = await createUser(userNoName)
+      const res = await userHelper.createUser(userNoName)
 
       expect(res.statusCode).toEqual(500)
       expect(res.body.error._message).toBe("User validation failed");
@@ -43,7 +43,7 @@ describe("USER SIGN UP", () => {
 
     it("should not create a user w/o email", async () => {
       const userNoEmail = { ...randomUserBody, email: null }
-      const res = await createUser(userNoEmail)
+      const res = await userHelper.createUser(userNoEmail)
       
       expect(res.body.error._message).toBe("User validation failed");
       expect(res.body.error.errors.email.message).toBe("Please provide your email");
@@ -51,7 +51,7 @@ describe("USER SIGN UP", () => {
 
     it("should not create a user w/o password", async () => {
       const userNoPass = { ...randomUserBody, password: null }
-      const res = await createUser(userNoPass)
+      const res = await userHelper.createUser(userNoPass)
 
       expect(res.body.error._message).toBe("User validation failed");
       expect(res.body.error.errors.password.message).toBe("Please provide a password");
@@ -60,7 +60,7 @@ describe("USER SIGN UP", () => {
 
     it("should not create a user w/o passwordConfirm", async () => {
       const userNoPassConfirm = { ...randomUserBody, passwordConfirm: null }
-      const res = await createUser(userNoPassConfirm)
+      const res = await userHelper.createUser(userNoPassConfirm)
 
       expect(res.body.error._message).toBe("User validation failed");
       expect(res.body.error.errors.passwordConfirm.message).toBe("Please confirm your password");
@@ -68,7 +68,7 @@ describe("USER SIGN UP", () => {
   });
 
   afterAll(async() => {
-      await deleteUser(cookie).then(res => {
+      await userHelper.deleteUser(cookie).then(res => {
         expect(res.statusCode).toEqual(204)
       })
   });

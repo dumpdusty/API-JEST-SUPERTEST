@@ -1,18 +1,18 @@
 
-import { createRandomTour, tourCreate, tourDelete } from "../../../helpers/tourHelper";
-import { deleteUser } from "../../../helpers/userHelper";
+import * as tourHelper from "../../../helpers/tourHelper";
+import * as userHelper from "../../../helpers/userHelper";
 
 describe('DELETE TOUR POSITIVE', () => {
 
     let res: any, data: any =[], tourId: string;
-    const randomTourBody = createRandomTour();
+    const randomTourBody = tourHelper.createRandomTour();
 
     beforeAll(async () => {
         data.push(process.env.COOKIE)
   
-        tourId = (await tourCreate(data, randomTourBody)).body.data.data._id;
+        tourId = (await tourHelper.tourCreate(data, randomTourBody)).body.data.data._id;
 
-        res = await tourDelete(data, tourId)
+        res = await tourHelper.tourDelete(data, tourId)
       });
 
     it('verify response status', () => {
@@ -24,6 +24,6 @@ describe('DELETE TOUR POSITIVE', () => {
     });
 
     afterAll(async() => {
-        await deleteUser(data)
+        await userHelper.deleteUser(data)
     });
 });

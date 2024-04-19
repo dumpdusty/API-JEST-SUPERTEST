@@ -1,21 +1,21 @@
 import * as supertest from "supertest";
-import { createRandomUserBody, deleteUser, createUser, loginUser } from "../../../helpers/userHelper";
+import * as userHelper from "../../../helpers/userHelper";
 
 const request = supertest("localhost:8001/api/v1");
 
 describe("USER LOGIN", () => {
   let cookie: any;
-  const randomUserBody = createRandomUserBody()
+  const randomUserBody = userHelper.createRandomUserBody()
 
   describe("POSITIVE", () => {
     let res: any
 
     beforeAll(async () => {
-      await createUser(randomUserBody).then(res => {
+      await userHelper.createUser(randomUserBody).then(res => {
         cookie = res.header["set-cookie"];
       })
 
-      res = await loginUser(randomUserBody.email, randomUserBody.password)
+      res = await userHelper.loginUser(randomUserBody.email, randomUserBody.password)
       });
 
       it("verify header", () => {
@@ -37,7 +37,7 @@ describe("USER LOGIN", () => {
       let res: any;
 
       beforeAll(async () => {
-        res = await loginUser(randomUserBody.email + '1', randomUserBody.password + "1")
+        res = await userHelper.loginUser(randomUserBody.email + '1', randomUserBody.password + "1")
       })
 
       it('verify response status', () => {
@@ -54,13 +54,13 @@ describe("USER LOGIN", () => {
     });
 
     afterAll(async () => {
-      await deleteUser(cookie).then((res) => {
+      await userHelper.deleteUser(cookie).then((res) => {
         expect(res.statusCode).toBe(204)
         expect(res.body).toEqual({})
 
       })
 
-      await loginUser(randomUserBody.email, randomUserBody.password).then(res => {
+      await userHelper.loginUser(randomUserBody.email, randomUserBody.password).then(res => {
         expect(res.statusCode).toBe(401)
       })
     })

@@ -1,5 +1,5 @@
 
-import { deleteUser } from '../../../helpers/userHelper' 
+import * as userHelper from '../../../helpers/userHelper' 
 
 describe("DELETE USER", () => {
   describe("positive", () => {
@@ -8,7 +8,7 @@ describe("DELETE USER", () => {
     beforeAll(async () => {
       data.push(process.env.COOKIE)
 
-      res = await deleteUser(data)
+      res = await userHelper.deleteUser(data)
     });
 
     it("verify response statusCode", async () => {

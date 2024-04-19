@@ -1,5 +1,5 @@
 
-import { deleteUser, getAllUsers } from '../../../helpers/userHelper' 
+import * as userHelper from '../../../helpers/userHelper' 
 
 describe("GET ALL USERS", () => {
   describe("positive", () => {
@@ -9,7 +9,7 @@ describe("GET ALL USERS", () => {
 
     data.push(process.env.COOKIE)
     
-      res = await getAllUsers(data)
+      res = await userHelper.getAllUsers(data)
     });
 
     it("verify response status", async () => {
@@ -21,7 +21,7 @@ describe("GET ALL USERS", () => {
     });
    
     afterAll(async () => {
-      await deleteUser(data)
+      await userHelper.deleteUser(data)
     });
   });
 });

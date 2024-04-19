@@ -1,6 +1,6 @@
 
-import { deleteUser } from "../../../helpers/userHelper";
-import { createRequiredRandomTour, tourCreate, tourGetAll, tourDelete } from "../../../helpers/tourHelper";
+import * as userHelper from "../../../helpers/userHelper";
+import * as tourHelper from "../../../helpers/tourHelper";
 
 
 describe('GET ALL TOURS', () => {
@@ -10,10 +10,10 @@ describe('GET ALL TOURS', () => {
 
     beforeAll(async() => {
         for(let i=0; i < 4; i++){
-            await tourCreate(data, createRequiredRandomTour())
+            await tourHelper.tourCreate(data, tourHelper.createRequiredRandomTour())
         }
 
-        res = await tourGetAll(data)  
+        res = await tourHelper.tourGetAll(data)  
     })
 
     it('verify response status', async() => {
@@ -39,9 +39,9 @@ describe('GET ALL TOURS', () => {
 
     afterAll(async () => {
         for (let i = 0; i < res.body.data.data.length; i++) {
-            await tourDelete(data, res.body.data.data[i]._id)
+            await tourHelper.tourDelete(data, res.body.data.data[i]._id)
           }
 
-          await deleteUser(data);
+          await userHelper.deleteUser(data);
     })
 });
