@@ -1,8 +1,6 @@
-import * as supertest from "supertest";
+
 import { createRandomUserBody } from "../../../helpers/userHelper";
 import { deleteUser, createUser, getAllUsers } from '../../../helpers/userHelper' 
-
-const request = supertest("localhost:8001/api/v1");
 
 describe("GET ALL USERS", () => {
   describe("positive", () => {

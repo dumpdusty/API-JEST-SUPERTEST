@@ -1,7 +1,5 @@
-import * as supertest from "supertest";
-import { createRandomUserBody, createUser, deleteUser, getAllUsers } from "../../../helpers/userHelper";
 
-const request = supertest("localhost:8001/api/v1");
+import { createRandomUserBody, createUser, deleteUser, getAllUsers } from "../../../helpers/userHelper";
 
 describe("USER SIGN UP", () => {
   let res: any, cookie: any

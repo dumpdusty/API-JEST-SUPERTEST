@@ -1,6 +1,6 @@
-
+import 'dotenv/config'
 import * as supertest from "supertest";
-const request = supertest("localhost:8001/api/v1");
+const request = supertest(process.env.BASE_URL as string);
 const chance = require('chance').Chance()
 import { Tour, TourMin } from "../data/interface";
 

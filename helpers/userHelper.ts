@@ -1,11 +1,10 @@
+import 'dotenv/config'
 import * as supertest from "supertest";
-const request = supertest("localhost:8001/api/v1");
+const request = supertest(process.env.BASE_URL as string);
+
 
 import { User } from '../data/interface'
 const chance = require('chance').Chance()
-
-
-const requestSdet = supertest("https://practice-react.sdetunicorns.com/api/test");
 
 export function createRandomUserBody(password = chance.string({length: 16})): User{
   return {
@@ -59,16 +58,3 @@ export async function deleteUser(cookie: any){
 //     .delete('/users/deleteMe')
 //     .set('Cookie', response.headers['set-cookie'])
 // }
-
-
-
-export function upload(endpoint: string, files: string[]){
-  const req = requestSdet
-    .post(`/upload/${endpoint}`)
-    
-    files.forEach(file => {
-      req.attach(endpoint, file)
-    }) 
-    return req
-}
-
