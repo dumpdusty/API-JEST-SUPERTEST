@@ -1,5 +1,5 @@
-// import * as supertest from "supertest";
-import { createRandomUserBody, createUser, getAllUsers,deleteUser } from "../../../helpers/userHelper";
+
+import { createRandomUserBody, createUser, deleteUser } from "../../../helpers/userHelper";
 
 import {
   createRandomTour,
@@ -8,11 +8,6 @@ import {
   tourCreate, tourDelete, tourGetAll
 } from "../../../helpers/tourHelper";
 
-// const chance = require("chance").Chance();
-
-// const request = supertest("localhost:8001/api/v1");
-
-let cookie: any; /*[x:string] - this doesn't work - reason unknown*/
 
 describe("TOUR CREATE", () => {
   let afterAllRes: any, cookie: any

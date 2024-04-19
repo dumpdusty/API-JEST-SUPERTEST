@@ -1,9 +1,7 @@
-import * as supertest from "supertest";
-import { createRandomUserBody } from "../../../helpers/userHelper";
-import { createUser } from '../../../helpers/userHelper'
-import { tourGetAll, tourDelete } from "../../../helpers/tourHelper";
 
-const request = supertest("localhost:8001/api/v1");
+import { createRandomUserBody } from "../../../helpers/userHelper";
+import { createUser, deleteUser } from '../../../helpers/userHelper'
+import { tourGetAll, tourDelete } from "../../../helpers/tourHelper";
 
 
 describe('GET ALL TOURS', () => {
