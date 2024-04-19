@@ -13,4 +13,4 @@ module.exports = async() => {
         data.push(process.env.COOKIE)
 }
 
-// TODO add ater hook to delete all users - impossible due to incorrect API call for delete user
+// TODO add ater hook to delete all users - impossible due to incorrect API call for delete use
