@@ -1,5 +1,5 @@
 
-import { createRandomUserBody, createUser, deleteUser } from "../../../helpers/userHelper";
+import { deleteUser } from "../../../helpers/userHelper";
 
 import {
   createRandomTour,
@@ -72,6 +72,8 @@ describe("TOUR CREATE", () => {
     }
 
     afterAllRes = await tourGetAll(data)
+
+    await deleteUser(data);
 
     // console.log(afterAllRes.body.data.data, 'ALL TOURS AFTER');
   })
