@@ -1,23 +1,16 @@
 
 import { createRandomUserBody } from "../../../helpers/userHelper";
-import { createUser, deleteUser } from '../../../helpers/userHelper'
 import { tourGetAll, tourDelete } from "../../../helpers/tourHelper";
 
 
 describe('GET ALL TOURS', () => {
 
-    let res: any, cookie: any;
+    let res: any, data: any =[];
     const userCreateBody = createRandomUserBody()
+    data.push(process.env.COOKIE)
 
     beforeAll(async() => {
-        await createUser(userCreateBody).then(res => {
-            expect(res.statusCode).toBe(201);
-
-            cookie = res.header["set-cookie"];
-        })
-
-        res = await tourGetAll(cookie)
-       
+        res = await tourGetAll(data)
     })
 
     it('verify response status', async() => {
@@ -43,7 +36,7 @@ describe('GET ALL TOURS', () => {
 
     afterAll(async () => {
         for (let i = 0; i < res.body.data.data.length; i++) {
-            await tourDelete(cookie, res.body.data.data[i]._id)
+            await tourDelete(data, res.body.data.data[i]._id)
           }
     })
 
