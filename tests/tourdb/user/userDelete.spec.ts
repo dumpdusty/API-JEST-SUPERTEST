@@ -1,5 +1,5 @@
-import { createRandomUserBody } from "../../../helpers/userHelper";
-import { deleteUser, createUser, getAllUsers } from '../../../helpers/userHelper' 
+
+import { deleteUser } from '../../../helpers/userHelper' 
 
 describe("DELETE USER", () => {
   describe("positive", () => {

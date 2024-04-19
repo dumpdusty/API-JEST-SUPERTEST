@@ -1,20 +1,16 @@
 require('dotenv').config()
-const request = require('supertest')
-var Chance = require('chance');
-var chance = new Chance();
+
+let data = []
+
+const { createRandomUserBody, createUser, deleteUser } = require('./helpers/userHelper')
+
+const randomUserBody = createRandomUserBody()
 
 module.exports = async() => {
-    const response = await request(process.env.BASE_URL)
-        .post('/users/signup')
-        .send({
-            name: chance.name(),
-            email: chance.email({ domain: "pirate.com" }),
-            password: "Pirate666!",
-            passwordConfirm: "Pirate666!"
-        });
-        process.env.COOKIE = response.res.headers["set-cookie"]
+    const createRes = await createUser(randomUserBody)
+        process.env.COOKIE = createRes.res.headers["set-cookie"]
+
+        data.push(process.env.COOKIE)
 }
 
-// TODO add ater hook to delete all users
-// and it will cover userSignup after all hook as well
-// TODO fix failed CI run for upload.spec.js
+// TODO add ater hook to delete all users - impossible due to incorrect API call for delete use

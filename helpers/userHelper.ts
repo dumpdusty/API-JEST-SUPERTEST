@@ -15,8 +15,6 @@ export function createRandomUserBody(password = chance.string({length: 16})): Us
   }
 }
 
-
-
 export function createUser(data: string | object | undefined){
     return request
     .post("/users/signup")
@@ -36,6 +34,11 @@ export function getAllUsers(cookie: any){
   return request.get("/users").set("Cookie", cookie);
 }
 
+export async function deleteUser(cookie: any){
+    return await request
+      .delete('/users/deleteMe')
+      .set('Cookie', cookie)
+}
 
 // export async function loginUserTest(user: {
 //   email: string, 
@@ -46,12 +49,6 @@ export function getAllUsers(cookie: any){
 //     .send({email: user.email,password: user.password})
 // }
 
-
-export async function deleteUser(cookie: any){
-    return await request
-      .delete('/users/deleteMe')
-      .set('Cookie', cookie)
-}
 
 // export async function deleteUserTest(response: {headers: {[x: string]: any}}){
 //   return await request

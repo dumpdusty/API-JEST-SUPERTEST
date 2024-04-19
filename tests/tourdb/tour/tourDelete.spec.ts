@@ -1,5 +1,6 @@
 
 import { createRandomTour, tourCreate, tourDelete } from "../../../helpers/tourHelper";
+import { deleteUser } from "../../../helpers/userHelper";
 
 describe('DELETE TOUR POSITIVE', () => {
 
@@ -20,5 +21,9 @@ describe('DELETE TOUR POSITIVE', () => {
 
     it('verify response body', () => {
         expect(res.body).toEqual({})
+    });
+
+    afterAll(async() => {
+        await deleteUser(data)
     });
 });

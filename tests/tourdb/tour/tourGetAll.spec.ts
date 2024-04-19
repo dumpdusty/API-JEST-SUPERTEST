@@ -1,16 +1,19 @@
 
-import { createRandomUserBody } from "../../../helpers/userHelper";
-import { tourGetAll, tourDelete } from "../../../helpers/tourHelper";
+import { deleteUser } from "../../../helpers/userHelper";
+import { createRequiredRandomTour, tourCreate, tourGetAll, tourDelete } from "../../../helpers/tourHelper";
 
 
 describe('GET ALL TOURS', () => {
 
     let res: any, data: any =[];
-    const userCreateBody = createRandomUserBody()
     data.push(process.env.COOKIE)
 
     beforeAll(async() => {
-        res = await tourGetAll(data)
+        for(let i=0; i < 4; i++){
+            await tourCreate(data, createRequiredRandomTour())
+        }
+
+        res = await tourGetAll(data)  
     })
 
     it('verify response status', async() => {
@@ -38,6 +41,7 @@ describe('GET ALL TOURS', () => {
         for (let i = 0; i < res.body.data.data.length; i++) {
             await tourDelete(data, res.body.data.data[i]._id)
           }
-    })
 
+          await deleteUser(data);
+    })
 });

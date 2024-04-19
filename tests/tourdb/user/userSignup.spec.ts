@@ -1,5 +1,5 @@
 
-import { createRandomUserBody, createUser, deleteUser, getAllUsers } from "../../../helpers/userHelper";
+import { createRandomUserBody, createUser, deleteUser } from "../../../helpers/userHelper";
 
 describe("USER SIGN UP", () => {
   let res: any, cookie: any
@@ -68,10 +68,6 @@ describe("USER SIGN UP", () => {
   });
 
   afterAll(async() => {
-    res = await getAllUsers(cookie)
-
-    // console.log(res.body.data.data, 'ALL TOURS BEFORE');
-
       await deleteUser(cookie).then(res => {
         expect(res.statusCode).toEqual(204)
       })
