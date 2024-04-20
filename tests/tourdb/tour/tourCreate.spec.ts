@@ -5,12 +5,12 @@ import * as tourHelper from "../../../helpers/tourHelper";
 
 
 describe("TOUR CREATE", () => {
-  let afterAllRes: any, data: any =[]
+  let afterAllRes: any, data: any = []
   data.push(process.env.COOKIE)
 
   describe("create normal tour", () => {
     let res: any
-    
+
     beforeAll(async () => {
       const randomTourBody = tourHelper.createRandomTour();
       res = await tourHelper.tourCreate(data, randomTourBody);
@@ -36,28 +36,27 @@ describe("TOUR CREATE", () => {
   describe("create tour-required only", () => {
     let res: any
     beforeAll(async () => {
-      const randomRequiredTourBody = tourHelper.createRequiredRandomTour(); 
-      res = await tourHelper.tourCreate(data,randomRequiredTourBody)
+      res = await tourHelper.tourCreate(data, tourHelper.createRequiredRandomTour())
     });
 
     it("verify response status", async () => {
-        expect(res.body.status).toBe("success");
-      });
-  
-      it("verify response statusCode", async () => {
-        expect(res.statusCode).toBe(201);
-      });
-  
-      it("verify response statusCode", async () => {
-        expect(typeof res.body.data.data.name).toBe("string");
-      });
-  
-      it("verify response difficulty", async () => {
-        expect(tourHelper.diffArray).toContain(res.body.data.data.difficulty);
-      });
+      expect(res.body.status).toBe("success");
+    });
+
+    it("verify response statusCode", async () => {
+      expect(res.statusCode).toBe(201);
+    });
+
+    it("verify response statusCode", async () => {
+      expect(typeof res.body.data.data.name).toBe("string");
+    });
+
+    it("verify response difficulty", async () => {
+      expect(tourHelper.diffArray).toContain(res.body.data.data.difficulty);
+    });
   });
-  
-  afterAll(async() => {
+
+  afterAll(async () => {
     afterAllRes = await tourHelper.tourGetAll(data)
 
     // console.log(afterAllRes.body.data.data, 'ALL TOURS BEFORE');

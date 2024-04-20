@@ -5,7 +5,7 @@ const chance = require('chance').Chance()
 import { Tour, TourMin } from "../data/interface";
 
 
-let tourRandomName = "tour_" + chance.word();
+// let tourRandomName = "tour_" + chance.word();  // create unique name
 export const diffArray = ["easy", "medium", "difficult"];
 
 function randomNum(max: number) {
