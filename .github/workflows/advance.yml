@@ -43,7 +43,6 @@ jobs:
       with:
         name: test-results
         path: test-results.zip
-
   build:
     runs-on: ubuntu-latest
     steps:
