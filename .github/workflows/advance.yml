@@ -31,20 +31,13 @@ jobs:
     - name: Run Jest Test
       env:
         BASE_URL: ${{ secrets.BASE_URL }}  
-      run: npx jest upload.spec.ts --json --outputFile=test-results.json
-
-    # - name: Check if results exist
-    #   run: ls -l
-
-    # - name: Zip test results
-    #   run: zip -r test-results.zip test-results.json
-    #   # working-directory: ${{ github.workspace }}
+      run: npx jest upload.spec.ts
 
     - name: Upload the test result ZIP
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: test-results
-        path: test-results.json
+        path: reports
         
   # nenujnaya-fignya:
   #   runs-on: ubuntu-latest
