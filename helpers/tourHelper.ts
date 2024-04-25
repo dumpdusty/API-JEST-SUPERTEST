@@ -18,14 +18,14 @@ function randomDifficulty() {
 const randomDifLvl = randomDifficulty();
 
 function createRandomCoordinates() {
-    return [chance.latitude({min: -30, max: 70}), chance.longitude({min: -30, max: 70})]
+  return [chance.latitude({ min: -30, max: 70 }), chance.longitude({ min: -30, max: 70 })]
 }
 
 const randomCoordinates = createRandomCoordinates()
 
 
 
-export function createRandomTour(name = chance.word({length:12})): Tour {
+export function createRandomTour(name = chance.word({ length: 12 })): Tour {
   return {
     name: name,
     duration: randomNum(10),
@@ -34,7 +34,7 @@ export function createRandomTour(name = chance.word({length:12})): Tour {
     summary: `You will stay in ${name} for ${randomNum(30)} days`,
     difficulty: randomDifLvl,
     price: chance.integer({ min: 100, max: 500 }),
-    rating: chance.integer({ min: 1, max: 5}),
+    rating: chance.integer({ min: 1, max: 5 }),
     imageCover: "image.jpg",
     ratingsAverage: chance.floating({ min: 1, max: 5, fixed: 2 }),
     guides: [],
@@ -42,7 +42,7 @@ export function createRandomTour(name = chance.word({length:12})): Tour {
     location: {
       latitude: chance.latitude(),
       longitude: chance.longitude(),
-      description:' Baku, Azerbaijan',
+      description: ' Baku, Azerbaijan',
       address: chance.address(),
     },
     startLocation: {
@@ -53,34 +53,34 @@ export function createRandomTour(name = chance.word({length:12})): Tour {
 }
 
 
-export function createRequiredRandomTour(name = chance.word({length:12})): TourMin {
-    return {
-      name: name,
-      duration: randomNum(10),
-      maxGroupSize: randomNum(12),
-      difficulty: randomDifLvl,
-      price: chance.integer({ min: 100, max: 500 }),
-      summary: `You will stay in ${name} for ${randomNum(30)} days`,
-      imageCover: "image.jpg",
-      startLocation: {
-        type: 'Point',
-        coordinates: randomCoordinates,
-      },
-    };
-  }
-
-
-export function tourCreate(cookie: any, data: any){
-  return request
-  .post("/tours")
-  .set("Cookie", cookie)
-  .send(data);
+export function createRequiredRandomTour(name = chance.word({ length: 12 })): TourMin {
+  return {
+    name: name,
+    duration: randomNum(10),
+    maxGroupSize: randomNum(12),
+    difficulty: randomDifLvl,
+    price: chance.integer({ min: 100, max: 500 }),
+    summary: `You will stay in ${name} for ${randomNum(30)} days`,
+    imageCover: "image.jpg",
+    startLocation: {
+      type: 'Point',
+      coordinates: randomCoordinates,
+    },
+  };
 }
 
-export function tourGetAll(cookie: any){
+
+export function tourCreate(cookie: any, data: any) {
+  return request
+    .post("/tours")
+    .set("Cookie", cookie)
+    .send(data);
+}
+
+export function tourGetAll(cookie: any) {
   return request.get('/tours').set("Cookie", cookie)
 }
 
-export function tourDelete(cookie: any, tourId: string){
+export function tourDelete(cookie: any, tourId: string) {
   return request.delete(`/tours/${tourId}`).set("Cookie", cookie);
 }

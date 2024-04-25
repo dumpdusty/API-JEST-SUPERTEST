@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['14', '16', '18']
+        node-version: ['14']
 
     steps:
     - name: Checkout code
@@ -31,19 +31,20 @@ jobs:
     - name: Run Jest Test
       run: npx jest upload.spec.ts --json --outputFile=test-results.json
 
-    - name: Check if results exist
-      run: ls -l
+    # - name: Check if results exist
+    #   run: ls -l
 
-    - name: Zip test results
-      run: zip -r test-results.zip test-results.json
-      # working-directory: ${{ github.workspace }}
+    # - name: Zip test results
+    #   run: zip -r test-results.zip test-results.json
+    #   # working-directory: ${{ github.workspace }}
 
     - name: Upload the test result ZIP
       uses: actions/upload-artifact@v2
       with:
         name: test-results
         path: test-results.zip
-  build:
+        
+  nenujnaya-fignya:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code

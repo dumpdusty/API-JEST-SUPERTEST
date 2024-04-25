@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="32" failures="0" errors="0" time="14.559">
-  <testsuite name="DELETE USER" errors="0" failures="0" skipped="0" timestamp="2024-04-19T22:45:16" time="9.76" tests="2">
-    <testcase classname="DELETE USER positive verify response statusCode" name="DELETE USER positive verify response statusCode" time="0.008">
+<testsuites name="jest tests" tests="34" failures="0" errors="0" time="11.339">
+  <testsuite name="GET ALL USERS" errors="0" failures="0" skipped="0" timestamp="2024-04-25T07:39:49" time="7.986" tests="2">
+    <testcase classname="GET ALL USERS positive verify response status" name="GET ALL USERS positive verify response status" time="0.008">
     </testcase>
-    <testcase classname="DELETE USER positive verify response body" name="DELETE USER positive verify response body" time="0.001">
-    </testcase>
-  </testsuite>
-  <testsuite name="GET ALL USERS" errors="0" failures="0" skipped="0" timestamp="2024-04-19T22:45:16" time="10.059" tests="2">
-    <testcase classname="GET ALL USERS positive verify response status" name="GET ALL USERS positive verify response status" time="0.012">
-    </testcase>
-    <testcase classname="GET ALL USERS positive verify response statusCode" name="GET ALL USERS positive verify response statusCode" time="0.001">
+    <testcase classname="GET ALL USERS positive verify response statusCode" name="GET ALL USERS positive verify response statusCode" time="0">
     </testcase>
   </testsuite>
-  <testsuite name="DELETE TOUR POSITIVE" errors="0" failures="0" skipped="0" timestamp="2024-04-19T22:45:16" time="10.739" tests="2">
-    <testcase classname="DELETE TOUR POSITIVE verify response status" name="DELETE TOUR POSITIVE verify response status" time="0.008">
+  <testsuite name="DELETE TOUR POSITIVE" errors="0" failures="0" skipped="0" timestamp="2024-04-25T07:39:49" time="8.412" tests="2">
+    <testcase classname="DELETE TOUR POSITIVE verify response status" name="DELETE TOUR POSITIVE verify response status" time="0.007">
     </testcase>
-    <testcase classname="DELETE TOUR POSITIVE verify response body" name="DELETE TOUR POSITIVE verify response body" time="0.002">
+    <testcase classname="DELETE TOUR POSITIVE verify response body" name="DELETE TOUR POSITIVE verify response body" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="USER LOGIN" errors="0" failures="0" skipped="0" timestamp="2024-04-19T22:45:16" time="11.176" tests="6">
-    <testcase classname="USER LOGIN POSITIVE verify header" name="USER LOGIN POSITIVE verify header" time="0.008">
+  <testsuite name="USER SIGN UP" errors="0" failures="0" skipped="0" timestamp="2024-04-25T07:39:49" time="8.746" tests="8">
+    <testcase classname="USER SIGN UP POSITIVE TESTS verify user name" name="USER SIGN UP POSITIVE TESTS verify user name" time="0.007">
     </testcase>
-    <testcase classname="USER LOGIN POSITIVE verify response body status" name="USER LOGIN POSITIVE verify response body status" time="0.001">
+    <testcase classname="USER SIGN UP POSITIVE TESTS verify user email" name="USER SIGN UP POSITIVE TESTS verify user email" time="0">
     </testcase>
-    <testcase classname="USER LOGIN POSITIVE verify signup email equal login emails" name="USER LOGIN POSITIVE verify signup email equal login emails" time="0">
+    <testcase classname="USER SIGN UP POSITIVE TESTS verify token exist" name="USER SIGN UP POSITIVE TESTS verify token exist" time="0.001">
+    </testcase>
+    <testcase classname="USER SIGN UP POSITIVE TESTS verify type of token" name="USER SIGN UP POSITIVE TESTS verify type of token" time="0">
+    </testcase>
+    <testcase classname="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o name" name="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o name" time="0.21">
+    </testcase>
+    <testcase classname="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o email" name="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o email" time="0.068">
+    </testcase>
+    <testcase classname="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o password" name="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o password" time="0.006">
+    </testcase>
+    <testcase classname="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o passwordConfirm" name="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o passwordConfirm" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="USER LOGIN" errors="0" failures="0" skipped="0" timestamp="2024-04-25T07:39:49" time="9.005" tests="6">
+    <testcase classname="USER LOGIN POSITIVE verify header" name="USER LOGIN POSITIVE verify header" time="0.007">
+    </testcase>
+    <testcase classname="USER LOGIN POSITIVE verify response body status" name="USER LOGIN POSITIVE verify response body status" time="0">
+    </testcase>
+    <testcase classname="USER LOGIN POSITIVE verify signup email equal login emails" name="USER LOGIN POSITIVE verify signup email equal login emails" time="0.001">
     </testcase>
     <testcase classname="USER LOGIN NEGATIVE with invalid credentials verify response status" name="USER LOGIN NEGATIVE with invalid credentials verify response status" time="0.001">
     </testcase>
@@ -32,50 +44,44 @@
     <testcase classname="USER LOGIN NEGATIVE with invalid credentials verify response error" name="USER LOGIN NEGATIVE with invalid credentials verify response error" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="USER SIGN UP" errors="0" failures="0" skipped="0" timestamp="2024-04-19T22:45:16" time="11.178" tests="8">
-    <testcase classname="USER SIGN UP POSITIVE TESTS verify user name" name="USER SIGN UP POSITIVE TESTS verify user name" time="0.007">
+  <testsuite name="DELETE USER" errors="0" failures="0" skipped="0" timestamp="2024-04-25T07:39:49" time="9.257" tests="2">
+    <testcase classname="DELETE USER positive verify response statusCode" name="DELETE USER positive verify response statusCode" time="0.007">
     </testcase>
-    <testcase classname="USER SIGN UP POSITIVE TESTS verify user email" name="USER SIGN UP POSITIVE TESTS verify user email" time="0.001">
-    </testcase>
-    <testcase classname="USER SIGN UP POSITIVE TESTS verify token exist" name="USER SIGN UP POSITIVE TESTS verify token exist" time="0">
-    </testcase>
-    <testcase classname="USER SIGN UP POSITIVE TESTS veriy type of token" name="USER SIGN UP POSITIVE TESTS veriy type of token" time="0.001">
-    </testcase>
-    <testcase classname="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o name" name="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o name" time="0.009">
-    </testcase>
-    <testcase classname="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o email" name="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o email" time="0.01">
-    </testcase>
-    <testcase classname="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o password" name="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o password" time="0.01">
-    </testcase>
-    <testcase classname="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o passwordConfirm" name="USER SIGN UP NEGATIVE TESTS - short version should not create a user w/o passwordConfirm" time="0.006">
+    <testcase classname="DELETE USER positive verify response body" name="DELETE USER positive verify response body" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="GET ALL TOURS" errors="0" failures="0" skipped="0" timestamp="2024-04-19T22:45:16" time="13.438" tests="4">
-    <testcase classname="GET ALL TOURS verify response status" name="GET ALL TOURS verify response status" time="0.014">
+  <testsuite name="insert" errors="0" failures="0" skipped="0" timestamp="2024-04-25T07:39:49" time="9.55" tests="2">
+    <testcase classname="insert insert" name="insert insert" time="0.095">
     </testcase>
-    <testcase classname="GET ALL TOURS verify response contains array" name="GET ALL TOURS verify response contains array" time="0.001">
+    <testcase classname="insert verify user in mongodb" name="insert verify user in mongodb" time="0.909">
+    </testcase>
+  </testsuite>
+  <testsuite name="TOUR CREATE" errors="0" failures="0" skipped="0" timestamp="2024-04-25T07:39:49" time="9.746" tests="8">
+    <testcase classname="TOUR CREATE create normal tour verify response status" name="TOUR CREATE create normal tour verify response status" time="0.013">
+    </testcase>
+    <testcase classname="TOUR CREATE create normal tour verify response statusCode" name="TOUR CREATE create normal tour verify response statusCode" time="0.001">
+    </testcase>
+    <testcase classname="TOUR CREATE create normal tour verify response statusCode" name="TOUR CREATE create normal tour verify response statusCode" time="0.001">
+    </testcase>
+    <testcase classname="TOUR CREATE create normal tour verify response difficulty" name="TOUR CREATE create normal tour verify response difficulty" time="0.001">
+    </testcase>
+    <testcase classname="TOUR CREATE create tour-required only verify response status" name="TOUR CREATE create tour-required only verify response status" time="0.001">
+    </testcase>
+    <testcase classname="TOUR CREATE create tour-required only verify response statusCode" name="TOUR CREATE create tour-required only verify response statusCode" time="0">
+    </testcase>
+    <testcase classname="TOUR CREATE create tour-required only verify response statusCode" name="TOUR CREATE create tour-required only verify response statusCode" time="0.001">
+    </testcase>
+    <testcase classname="TOUR CREATE create tour-required only verify response difficulty" name="TOUR CREATE create tour-required only verify response difficulty" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="GET ALL TOURS" errors="0" failures="0" skipped="0" timestamp="2024-04-25T07:39:49" time="10.681" tests="4">
+    <testcase classname="GET ALL TOURS verify response status" name="GET ALL TOURS verify response status" time="0.006">
+    </testcase>
+    <testcase classname="GET ALL TOURS verify response contains array" name="GET ALL TOURS verify response contains array" time="0">
     </testcase>
     <testcase classname="GET ALL TOURS verify each array element contain id" name="GET ALL TOURS verify each array element contain id" time="0.001">
     </testcase>
     <testcase classname="GET ALL TOURS verify id is not empty" name="GET ALL TOURS verify id is not empty" time="0.001">
-    </testcase>
-  </testsuite>
-  <testsuite name="TOUR CREATE" errors="0" failures="0" skipped="0" timestamp="2024-04-19T22:45:16" time="13.659" tests="8">
-    <testcase classname="TOUR CREATE create normal tour verify response status" name="TOUR CREATE create normal tour verify response status" time="0.012">
-    </testcase>
-    <testcase classname="TOUR CREATE create normal tour verify response statusCode" name="TOUR CREATE create normal tour verify response statusCode" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE create normal tour verify response statusCode" name="TOUR CREATE create normal tour verify response statusCode" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE create normal tour verify response difficulty" name="TOUR CREATE create normal tour verify response difficulty" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE create tour-required only verify response status" name="TOUR CREATE create tour-required only verify response status" time="0.001">
-    </testcase>
-    <testcase classname="TOUR CREATE create tour-required only verify response statusCode" name="TOUR CREATE create tour-required only verify response statusCode" time="0.001">
-    </testcase>
-    <testcase classname="TOUR CREATE create tour-required only verify response statusCode" name="TOUR CREATE create tour-required only verify response statusCode" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE create tour-required only verify response difficulty" name="TOUR CREATE create tour-required only verify response difficulty" time="0.001">
     </testcase>
   </testsuite>
 </testsuites>

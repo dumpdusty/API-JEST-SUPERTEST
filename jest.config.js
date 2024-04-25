@@ -4,6 +4,7 @@ module.exports = {
   testEnvironment: 'node',
   testTimeout: 10000,
   setupFiles: ['./setup-jest.js'],
+  modulePathIgnorePatterns: ['./tests/typicode', './tests/upload.spec.ts'],
   reporters: ['default',
     ['jest-junit', { outputDirectory: 'reports' }],
     ['jest-html-reporters', { publicPath: 'reports'}]

@@ -25,7 +25,7 @@ describe("USER SIGN UP", () => {
       expect(res.body.token).toBeDefined();
     });
 
-    it("veriy type of token", async () => {
+    it("verify type of token", async () => {
       expect(typeof res.body.token).toBe("string");
     });
   });
@@ -75,7 +75,7 @@ describe("USER SIGN UP", () => {
 });
 
 
-// TODO add for loop to delete all users to after hook
+
 
 
 
