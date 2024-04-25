@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="4" failures="0" errors="0" time="6.535">
-  <testsuite name="UPLOAD" errors="0" failures="0" skipped="0" timestamp="2024-04-25T15:43:47" time="6.332" tests="4">
+<testsuites name="jest tests" tests="4" failures="0" errors="0" time="5.166">
+  <testsuite name="UPLOAD" errors="0" failures="0" skipped="0" timestamp="2024-04-25T15:55:43" time="4.977" tests="4">
     <testcase classname="UPLOAD upload single document verify response status code" name="UPLOAD upload single document verify response status code" time="0.002">
     </testcase>
     <testcase classname="UPLOAD upload single document verify response filename" name="UPLOAD upload single document verify response filename" time="0.001">
