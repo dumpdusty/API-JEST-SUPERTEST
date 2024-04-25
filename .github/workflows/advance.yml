@@ -29,6 +29,8 @@ jobs:
       run: npm install
 
     - name: Run Jest Test
+      env:
+        BASE_URL: ${{ secrets.BASE_URL }}  
       run: npx jest upload.spec.ts --json --outputFile=test-results.json
 
     # - name: Check if results exist
@@ -42,19 +44,19 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: test-results
-        path: test-results.zip
+        path: test-results.json
         
-  nenujnaya-fignya:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+  # nenujnaya-fignya:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Checkout code
+  #     uses: actions/checkout@v3
 
-    - name: Print workspace directory
-      run: echo "The workspace directory is ${{ github.workspace }}"
+  #   - name: Print workspace directory
+  #     run: echo "The workspace directory is ${{ github.workspace }}"
 
-    - name: Navigate to a subdirectory
-      run: cd /home/runner/work/API-JEST-SUPERTEST
+  #   - name: Navigate to a subdirectory
+  #     run: cd /home/runner/work/API-JEST-SUPERTEST
 
-    - name: Return to workspace directory
-      run: cd ${{ github.workspace }}
+  #   - name: Return to workspace directory
+  #     run: cd ${{ github.workspace }}
