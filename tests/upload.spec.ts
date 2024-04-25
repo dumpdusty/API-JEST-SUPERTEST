@@ -1,5 +1,5 @@
-
-import { upload } from '../helpers/uploadhelper'
+import supertest from 'supertest'
+import { upload } from '../helpers/uploadHelper'
 
 describe('UPLOAD', () => {
     let res: any
@@ -31,12 +31,11 @@ describe('UPLOAD', () => {
         });
 
     });
-
     
     
-    // it.skip('upload miltiple documents', async() => {
+    // it.skip('upload multiple documents', async() => {
     //     const files: string[] = ['./image/panda-1.jpg', './image/panda-2.jpg']
-    //     const req = request.post('/upload/miltiple')
+    //     const req = request.post('/upload/multiple')
 
     //     for(const file of files){
     //         req.attach('multiple', file)
