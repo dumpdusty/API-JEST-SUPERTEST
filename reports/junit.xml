@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="4" failures="0" errors="0" time="15.947">
-  <testsuite name="UPLOAD" errors="0" failures="0" skipped="0" timestamp="2024-04-25T16:08:57" time="15.757" tests="4">
-    <testcase classname="UPLOAD upload single document verify response status code" name="UPLOAD upload single document verify response status code" time="0.002">
-    </testcase>
-    <testcase classname="UPLOAD upload single document verify response filename" name="UPLOAD upload single document verify response filename" time="0">
-    </testcase>
-    <testcase classname="UPLOAD upload multiple documents verify response status code" name="UPLOAD upload multiple documents verify response status code" time="0.001">
-    </testcase>
-    <testcase classname="UPLOAD upload multiple documents verify response contains array" name="UPLOAD upload multiple documents verify response contains array" time="0.001">
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="2.586">
+  <testsuite name="simple math functions" errors="0" failures="0" skipped="0" timestamp="2024-04-26T20:47:10" time="2.424" tests="1">
+    <testcase classname="simple math functions verify sum" name="simple math functions verify sum" time="0.004">
     </testcase>
   </testsuite>
 </testsuites>
