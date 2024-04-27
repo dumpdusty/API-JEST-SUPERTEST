@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="4" failures="0" errors="0" time="7.234">
-  <testsuite name="UPLOAD" errors="0" failures="0" skipped="0" timestamp="2024-04-27T04:55:51" time="7.08" tests="4">
-    <testcase classname="UPLOAD upload single document verify response status code" name="UPLOAD upload single document verify response status code" time="0.002">
+<testsuites name="jest tests" tests="6" failures="0" errors="0" time="2.026">
+  <testsuite name="simple math functions positive" errors="0" failures="0" skipped="0" timestamp="2024-04-27T05:29:47" time="1.823" tests="6">
+    <testcase classname="simple math functions positive verify sum" name="simple math functions positive verify sum" time="0.002">
     </testcase>
-    <testcase classname="UPLOAD upload single document verify response filename" name="UPLOAD upload single document verify response filename" time="0.001">
+    <testcase classname="simple math functions positive verify diff" name="simple math functions positive verify diff" time="0.001">
     </testcase>
-    <testcase classname="UPLOAD upload multiple documents verify response status code" name="UPLOAD upload multiple documents verify response status code" time="0.001">
+    <testcase classname="simple math functions positive verify mult" name="simple math functions positive verify mult" time="0">
     </testcase>
-    <testcase classname="UPLOAD upload multiple documents verify response contains array" name="UPLOAD upload multiple documents verify response contains array" time="0.001">
+    <testcase classname="simple math functions positive verify div" name="simple math functions positive verify div" time="0">
+    </testcase>
+    <testcase classname="simple math functions negative verify sum" name="simple math functions negative verify sum" time="0">
+    </testcase>
+    <testcase classname="simple math functions negative verify diff" name="simple math functions negative verify diff" time="0.001">
     </testcase>
   </testsuite>
 </testsuites>

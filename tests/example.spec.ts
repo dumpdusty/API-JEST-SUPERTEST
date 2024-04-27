@@ -1,4 +1,4 @@
-describe('simple math functions', () => {
+describe('simple math functions positive', () => {
     it('verify sum', () => {
         expect(4 + 4).toEqual(8)
     })
@@ -13,5 +13,15 @@ describe('simple math functions', () => {
 
     it('verify div', () => {
         expect(4 / 4).toEqual(1)
+    })
+})
+
+describe('simple math functions negative', () => {
+    it('verify sum', () =>{
+        expect(4 + 4).not.toEqual(9)
+    })
+
+    it('verify diff', () =>{
+        expect(4 - 4).not.toEqual(1)
     })
 })
