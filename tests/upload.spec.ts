@@ -1,5 +1,4 @@
-// import * as uploadHelper from '../helpers/uploadHelper'
-const upload = require('../helpers/uploadHelper')
+import { upload }from '../helpers/uploadHelper'
 
 describe('UPLOAD', () => {
     let res: any
