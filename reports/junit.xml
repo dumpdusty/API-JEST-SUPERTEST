@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="5" failures="0" errors="0" time="2.514">
-  <testsuite name="simple math functions positive" errors="0" failures="0" skipped="0" timestamp="2024-04-27T05:22:12" time="2.254" tests="5">
-    <testcase classname="simple math functions positive verify sum" name="simple math functions positive verify sum" time="0.004">
+<testsuites name="jest tests" tests="6" failures="0" errors="0" time="2.026">
+  <testsuite name="simple math functions positive" errors="0" failures="0" skipped="0" timestamp="2024-04-27T05:29:47" time="1.823" tests="6">
+    <testcase classname="simple math functions positive verify sum" name="simple math functions positive verify sum" time="0.002">
     </testcase>
     <testcase classname="simple math functions positive verify diff" name="simple math functions positive verify diff" time="0.001">
     </testcase>
@@ -10,6 +10,8 @@
     <testcase classname="simple math functions positive verify div" name="simple math functions positive verify div" time="0">
     </testcase>
     <testcase classname="simple math functions negative verify sum" name="simple math functions negative verify sum" time="0">
+    </testcase>
+    <testcase classname="simple math functions negative verify diff" name="simple math functions negative verify diff" time="0.001">
     </testcase>
   </testsuite>
 </testsuites>

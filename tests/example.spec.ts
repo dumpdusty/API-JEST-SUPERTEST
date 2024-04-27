@@ -20,4 +20,8 @@ describe('simple math functions negative', () => {
     it('verify sum', () =>{
         expect(4 + 4).not.toEqual(9)
     })
+
+    it('verify diff', () =>{
+        expect(4 - 4).not.toEqual(1)
+    })
 })
