@@ -7,7 +7,7 @@
     "test": "cls && npx jest",
     "testex": "cls && npx jest test-example.spec.ts",
     "tourdb": "npx jest tourdb",
-    "single": "npx jest example.spec.ts"
+    "single": "npx jest upload.spec.ts"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,4 @@
-import { upload }from '../helpers/uploadHelper'
+import { upload } from '../helpers/uploadHelper'
 
 describe('UPLOAD', () => {
     let res: any
