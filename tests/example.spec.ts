@@ -7,4 +7,7 @@ describe('simple math functions', () => {
         expect(4 - 4).toEqual(0)
     })
 
+    it('verify mult', () => {
+        expect(4 * 4).toEqual(16)
+    })
 })
