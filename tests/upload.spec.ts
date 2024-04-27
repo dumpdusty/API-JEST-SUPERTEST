@@ -1,11 +1,11 @@
 import supertest from 'supertest'
-import { upload } from '../helpers/uploadHelper'
+import * as uploadHelper from '../helpers/uploadHelper'
 
 describe('UPLOAD', () => {
     let res: any
     describe('upload single document', () => {
         beforeAll(async() => {
-            res = await upload('single', ['./image/panda-1.jpg'])        
+            res = await uploadHelper.upload('single', ['./image/panda-1.jpg'])        
         })
 
         it('verify response status code', () => {        
@@ -19,7 +19,7 @@ describe('UPLOAD', () => {
     describe('upload multiple documents', () => {
         beforeAll(async() => {
             const files: string[] = ['./image/panda-1.jpg', './image/panda-2.jpg']
-            res = await upload('multiple',files)
+            res = await uploadHelper.upload('multiple',files)
         })
 
         it('verify response status code', async() => {
