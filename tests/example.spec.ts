@@ -12,7 +12,7 @@ describe('simple math functions positive', () => {
     })
 
     it('verify div', () => {
-        expect(4 / 4).toEqual(2)
+        expect(4 / 4).toEqual(1)
     })
 })
 
@@ -30,7 +30,7 @@ describe('simple math functions negative', () => {
     })
 
     it('verify div', () =>{
-        expect(4 / 4).not.toEqual(1)
+        expect(4 / 4).not.toEqual(0)
     })
 
     it('verify div-2', () =>{
