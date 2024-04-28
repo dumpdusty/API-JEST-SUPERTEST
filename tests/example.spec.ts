@@ -30,7 +30,7 @@ describe('simple math functions negative', () => {
     })
 
     it('verify div', () =>{
-        expect(4 / 4).not.toEqual(0)
+        expect(4 / 4).not.toEqual(1)
     })
 
     it('verify div-2', () =>{
