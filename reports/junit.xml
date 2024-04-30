@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="9" failures="0" errors="0" time="2.121">
-  <testsuite name="simple math functions positive" errors="0" failures="0" skipped="0" timestamp="2024-04-29T01:43:19" time="1.947" tests="9">
-    <testcase classname="simple math functions positive verify sum" name="simple math functions positive verify sum" time="0.002">
-    </testcase>
-    <testcase classname="simple math functions positive verify diff" name="simple math functions positive verify diff" time="0.001">
-    </testcase>
-    <testcase classname="simple math functions positive verify mult" name="simple math functions positive verify mult" time="0">
-    </testcase>
-    <testcase classname="simple math functions positive verify div" name="simple math functions positive verify div" time="0">
-    </testcase>
-    <testcase classname="simple math functions negative verify sum" name="simple math functions negative verify sum" time="0.001">
-    </testcase>
-    <testcase classname="simple math functions negative verify diff" name="simple math functions negative verify diff" time="0">
-    </testcase>
-    <testcase classname="simple math functions negative verify mult" name="simple math functions negative verify mult" time="0">
-    </testcase>
-    <testcase classname="simple math functions negative verify div" name="simple math functions negative verify div" time="0.001">
-    </testcase>
-    <testcase classname="simple math functions negative verify div-2" name="simple math functions negative verify div-2" time="0">
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="4.432">
+  <testsuite name="REVIEW_v_2" errors="0" failures="0" skipped="0" timestamp="2024-04-30T20:12:53" time="4.276" tests="1">
+    <testcase classname="REVIEW_v_2 create review" name="REVIEW_v_2 create review" time="0.859">
     </testcase>
   </testsuite>
 </testsuites>

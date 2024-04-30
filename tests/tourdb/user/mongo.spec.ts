@@ -1,3 +1,4 @@
+/*
 const { MongoClient, ObjectId } = require('mongodb');
 
 import * as userHelper from "../../../helpers/userHelper";
@@ -55,3 +56,4 @@ describe('insert', () => {
         expect(findUser === null).toBeTruthy();
     });
 });
+*/

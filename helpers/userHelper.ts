@@ -15,7 +15,7 @@ export function createRandomUserBody(password = chance.string({length: 16})): Us
   }
 }
 
-export function createUser(data: string | object | undefined){
+export function createUser(data: any){
     return request
     .post("/users/signup")
     .send(data)
