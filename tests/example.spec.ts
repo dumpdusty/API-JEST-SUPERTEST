@@ -29,11 +29,15 @@ describe('simple math functions negative', () => {
         expect(4 * 4).not.toEqual(1)
     })
 
-    it('verify div', () =>{
+    it('verify div-1', () =>{
         expect(4 / 4).not.toEqual(0)
     })
 
     it('verify div-2', () =>{
         expect(4 / 4).not.toEqual(2)
+    })
+
+    it('verify div-3', () =>{
+        expect(4 / 4).not.toEqual(3)
     })
 })
